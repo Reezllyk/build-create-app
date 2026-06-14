@@ -6,6 +6,7 @@ import {TypographyH1} from "@/components/ui/typography-h1";
 import {Button} from "@/components/ui/button";
 import {TableParts} from "@/app/dashboard/components/table";
 import {componentCategories} from "@/lib/constants";
+import {SaveBuildModal} from "@/app/dashboard/components/save-build-modal";
 
 export const CurrentBuild = () => {
     const [selectedByCategory, setSelectedByCategory] = useState<Record<string, Component | null>>({});
@@ -25,6 +26,11 @@ export const CurrentBuild = () => {
                 <TableParts
                     components={componentCategories}
                     onSelectedComponent={onSelectComponent}
+                    selectedByCategory={selectedByCategory}
+                />
+                <SaveBuildModal
+                    open={saveDialogOpen}
+                    onOpenChange={setSaveDialogOpen}
                     selectedByCategory={selectedByCategory}
                 />
             </div>

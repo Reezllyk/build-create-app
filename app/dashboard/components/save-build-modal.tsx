@@ -1,8 +1,8 @@
 "use client"
 
 import {Component} from "@/lib/types";
-import {SaveBuildFromState} from "@/app/dashboard/actions";
-import {JSX, useMemo, useRef} from "react";
+import {saveBuildAction, SaveBuildFromState} from "@/app/dashboard/actions";
+import {JSX, useActionState, useEffect, useMemo, useRef} from "react";
 import {useRouter} from "next/navigation";
 import {
     Dialog,
@@ -15,6 +15,7 @@ import {
 import {Input} from "@/components/ui/input";
 import {useFormStatus} from "react-dom";
 import {Button} from "@/components/ui/button";
+import {toast} from "sonner";
 
 type Props = {
     open: boolean;
@@ -35,13 +36,29 @@ export function SaveBuildModal({
                                }: Props) {
     const router = useRouter();
     const formRef = useRef<HTMLFormElement>(null);
-    const {pending} = useFormStatus()
+    const {pending} = useFormStatus();
+    const [state, formAction] = useActionState(saveBuildAction, initialState);
 
     const componentIds = useMemo(() => Object
             .values(selectedByCategory)
             .filter((component): component is Component => component !== null)
             .map((component) => component.id)
         ,[selectedByCategory]);
+
+    useEffect(() => {
+        if (state.status === "success") {
+            toast.success("PC build saved");
+            formRef.current?.reset();
+
+            onOpenChange(false);
+
+            if (redirectPath) {
+                router.push(redirectPath);
+            } else {
+                router.refresh();
+            }
+        }
+    }, [onOpenChange, redirectPath, router, state.status]);
 
     const handleOpenChange = (nextOpen: boolean) => {
         if (!nextOpen) {
@@ -59,7 +76,7 @@ export function SaveBuildModal({
                     <DialogDescription>Enter the name of the assembly</DialogDescription>
                 </DialogHeader>
 
-                <form ref={formRef} className="space-y-4">
+                <form ref={formRef} action={formAction} className="space-y-4">
                     <Input
                         name="name"
                         placeholder="For example: Gaming PC"
