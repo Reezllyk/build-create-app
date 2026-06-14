@@ -6,6 +6,7 @@ import {useState} from "react";
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
 import {Dialog, DialogTrigger} from "@/components/ui/dialog";
 import {Button} from "@/components/ui/button";
+import {AddComponentModalContent} from "@/app/dashboard/components/add-component-modal";
 
 const iconMap: Record<ComponentCategory["icon"], React.ElementType> = {
     Cpu,
@@ -80,6 +81,16 @@ export function TableParts({
                                                 { selected ? "Edit" : "Add"}
                                             </Button>
                                         </DialogTrigger>
+                                        <AddComponentModalContent
+                                            categoryId={category.id}
+                                            categoryName={category.name}
+                                            onSelect={
+                                                (c) => {
+                                                    onSelectedComponent(category.id, c);
+                                                    setOpenCategoryId(null);
+                                                }
+                                            }
+                                        />
                                     </Dialog>
                                 </TableCell>
                             </TableRow>
