@@ -69,7 +69,9 @@ export function TableParts({
                                 </TableCell>
                                 <TableCell className="font-bold">{category.name}</TableCell>
                                 <TableCell >{selected?.name ?? "-"}</TableCell>
-                                <TableCell>{selected?.price ?? "-"}</TableCell>
+                                <TableCell>
+                                    {selected?.price != null ? `${selected.price.toLocaleString("uk-UA")} ₴` : "-"}
+                                </TableCell>
                                 <TableCell className="text-right">
                                     <Dialog
                                         open={openCategoryId === category.id}
@@ -103,7 +105,7 @@ export function TableParts({
                     <TableCell colSpan={5}>
                         <p className="font-medium">Build price:</p>
                         <p className="font-large text-gray-500">
-                            {new Intl.NumberFormat("ua-UA").format(totalPrice)}
+                            {new Intl.NumberFormat("ua-UA").format(totalPrice)} ₴
                         </p>
                     </TableCell>
                 </TableRow>
