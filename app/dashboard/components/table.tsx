@@ -3,7 +3,7 @@
 import {Component, ComponentCategory} from "@/lib/types";
 import {Box, Cpu, Fan, HardDrive, MemoryStick, Monitor, Plus, Server, Zap} from "lucide-react";
 import {useState} from "react";
-import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
+import {Table, TableBody, TableCell, TableFooter, TableHead, TableHeader, TableRow} from "@/components/ui/table";
 import {Dialog, DialogTrigger} from "@/components/ui/dialog";
 import {Button} from "@/components/ui/button";
 import {AddComponentModalContent} from "@/app/dashboard/components/add-component-modal";
@@ -98,6 +98,16 @@ export function TableParts({
                     })
                 }
             </TableBody>
+            <TableFooter>
+                <TableRow>
+                    <TableCell colSpan={5}>
+                        <p className="font-medium">Build price:</p>
+                        <p className="font-large text-gray-500">
+                            {new Intl.NumberFormat("ua-UA").format(totalPrice)}
+                        </p>
+                    </TableCell>
+                </TableRow>
+            </TableFooter>
         </Table>
     )
 }

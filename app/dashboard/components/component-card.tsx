@@ -19,7 +19,7 @@ export function ComponentCard({
             <CardHeader className="min-h-0 flex-1 pb-2">
                 <CardTitle className="text-base font-medium leading-tight">{name}</CardTitle>
                 <CardDescription className="text-sm font-medium tabular-nums">
-                    {new Intl.NumberFormat("en-EN").format(price)}
+                    {new Intl.NumberFormat("ua-UA").format(price)}
                 </CardDescription>
             </CardHeader>
             <CardFooter className="pt-0">
