@@ -4,6 +4,10 @@ import {prisma} from "@/lib/db";
 import {getMyBuilds} from "@/lib/builds";
 import {TypographyH3} from "@/components/ui/typography-h3";
 import {BuildCard} from "@/app/builds/components/builds-card";
+import {DeleteBuildButton} from "@/app/builds/components/delete-build-button";
+import {deleteBuildAction, setBuildPublicAction} from "@/app/builds/actions";
+import {Button} from "@/components/ui/button";
+import {Share2} from "lucide-react";
 
 export default async function MyBuilds() {
     const session = await auth();
@@ -26,7 +30,19 @@ export default async function MyBuilds() {
                                 key={b.id}
                                 build={b}
                             >
-                                ...
+                                <DeleteBuildButton buildId={b.id} deleteAction={deleteBuildAction} />
+                                <form action={setBuildPublicAction} className="contents">
+                                    <input type="hidden" name="buildId" value={b.id} />
+                                    <input type="hidden" name="isPublic" value={b.isPublic ? "false" : "true"} />
+                                    <Button
+                                        type="submit"
+                                        variant={`${b.isPublic ? "default" : "ghost"}`}
+                                    >
+                                        <Share2 className={`
+                                            h-4 w-4 mr-1 ${b.isPublic ? "fill-background" : ""}
+                                        `} />
+                                    </Button>
+                                </form>
                             </BuildCard>
                         ))
                         ) : (
