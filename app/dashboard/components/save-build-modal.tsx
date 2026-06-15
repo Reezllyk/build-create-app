@@ -22,7 +22,7 @@ type Props = {
     onOpenChange: (open: boolean) => void;
     selectedByCategory: Record<string, Component | null>
     defaultName?: string;
-    redirectPath: string;
+    redirectPath?: string;
 }
 
 const initialState: SaveBuildFromState = { status: "idle" };
