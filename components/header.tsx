@@ -6,14 +6,16 @@ import {HeaderNav} from "@/components/header-nav";
 export async function Header() {
     const session = await auth();
     return (
-        <header className="container mx-auto flex items-center justify-between p-4">
+        <header className="container mx-auto px-4 py-4">
+            <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                 <TypographyH3>
-                    <Link href={session?.user ? "/" : "/"}>PC Builder</Link>
+                    <Link href="/">PC Builder</Link>
                 </TypographyH3>
 
-                <nav className="flex-1 ml-8">
+                <nav className="flex-1 md:ml-8 lg:ml-35">
                     <HeaderNav session={session} />
                 </nav>
+            </div>
         </header>
     )
 }
