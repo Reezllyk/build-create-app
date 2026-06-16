@@ -35,3 +35,16 @@ export async function getPublicBuilds(userId: string) {
         }
     })
 }
+
+export async function getBuildToEdit(id: string) {
+    return prisma.build.findFirst({
+        where: { id },
+        include: {
+            components: {
+                include: {
+                    component: true
+                }
+            }
+        }
+    })
+}
