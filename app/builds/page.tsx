@@ -22,7 +22,7 @@ export default async function MyBuilds() {
         <div className="py-6">
             <TypographyH3>My PC Builds</TypographyH3>
             <br/>
-            <div className="grid gap-4 lg:grid-cols-3">
+            <div className="grid gap-4 lg:grid-cols-3 ">
                 {
                     builds.length > 0 ? (
                         builds.map(b => (

@@ -70,6 +70,7 @@ export function EditBuildForm({
                     Editing PC builds - {buildName}
                 </TypographyH3>
                 <Button
+                    size="lg"
                     onClick={() => setSaveDialogOpen(true)}
                 >
                     Save

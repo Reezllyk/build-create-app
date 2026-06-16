@@ -31,21 +31,35 @@ export function BuildCard({
     children,
 }: Props) {
     return (
-        <Card className="flex flex-col">
-            <CardHeader className="pb-2 flex flex-row items-start justify-between gap-2">
-                <div className="min-w-0 flex">
-                    <CardTitle>
-                        <TypographyH3>{build.name}</TypographyH3>
-                    </CardTitle>
-                    <p className="text-xs text-muted-foreground mt-1">
-                        Created by: { build.user?.email?.trim()}
+        <Card className="
+            flex flex-col
+            border-white/10
+            bg-gradient-to-b
+            from-white/[0.05]
+            to-white/[0.02]
+            backdrop-blur-md
+            shadow-xl
+        ">
+            <CardHeader className="pb-4 flex flex-row items-start justify-between gap-4">
+                <div className="min-w-0 flex-1">
+                    <TypographyH3>
+                        {build.name}
+                    </TypographyH3>
+
+                    <p className="mt-2 text-xs text-muted-foreground">
+                        Created by
+                    </p>
+
+                    <p className="text-sm text-muted-foreground truncate">
+                        {build.user?.email}
                     </p>
                 </div>
-                <div className="shrink-0">
-                    <Button>
-                        <Link href={`/builds/${build.id}/edit`}><Pencil className="h-4 w-4" /></Link>
-                    </Button>
-                </div>
+
+                <Button size="icon" className="shrink-0">
+                    <Link href={`/builds/${build.id}/edit`}>
+                        <Pencil className="h-4 w-4" />
+                    </Link>
+                </Button>
             </CardHeader>
             <CardContent className="flex-1 pt-0 space-y-1 gap-2">
                 {

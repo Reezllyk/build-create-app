@@ -10,7 +10,7 @@ export default function Home() {
     return (
         <div className="relative flex min-h-screen items-center justify-center overflow-hidden">
             <div className="absolute inset-0 -z-10">
-                <div className="absolute left-1/2 top-1/3 h-96 w-96 -translate-x-1/2 rounded-full bg-primary/20 blur-3xl" />
+                <div className="absolute left-1/2 top-1/3 h-96 w-96 -translate-x-1/2 rounded-full bg-cyan-500/10 blur-3xl" />
             </div>
 
             <main className="flex w-full max-w-6xl flex-col items-center px-6 py-24">

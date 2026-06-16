@@ -68,7 +68,17 @@ export function TableParts({
                                     </div>
                                 </TableCell>
                                 <TableCell className="font-bold">{category.name}</TableCell>
-                                <TableCell >{selected?.name ?? "-"}</TableCell>
+                                <TableCell >
+                                    <TableCell>
+                                        {selected ? (
+                                            <span className="text-green-500">
+                                                {selected.name}
+                                            </span>
+                                        ) : (
+                                            <span className="text-muted-foreground">Not selected</span>
+                                        )}
+                                    </TableCell>
+                                </TableCell>
                                 <TableCell>
                                     {selected?.price != null ? `${selected.price.toLocaleString("uk-UA")} ₴` : "-"}
                                 </TableCell>
@@ -78,7 +88,7 @@ export function TableParts({
                                         onOpenChange={(open) => setOpenCategoryId(open ? category.id : null)}
                                     >
                                         <DialogTrigger asChild>
-                                            <Button variant="outline" size="sm">
+                                            <Button variant={selected ? "secondary" : "default"} size="sm">
                                                 <Plus className="h-4 w-4 mr-1" />
                                                 { selected ? "Edit" : "Add"}
                                             </Button>
@@ -103,8 +113,8 @@ export function TableParts({
             <TableFooter>
                 <TableRow>
                     <TableCell colSpan={5}>
-                        <p className="font-medium">Build price:</p>
-                        <p className="font-large text-gray-500">
+                        <p className="text-sm text-muted-foreground">Total Build Price:</p>
+                        <p className="text-3xl font-bold font-large text-gray-500">
                             {new Intl.NumberFormat("ua-UA").format(totalPrice)} ₴
                         </p>
                     </TableCell>

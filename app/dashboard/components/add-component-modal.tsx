@@ -35,7 +35,7 @@ export function AddComponentModalContent({
             <DialogHeader>
                 <DialogTitle>Add Component - {categoryName}</DialogTitle>
             </DialogHeader>
-            <div className="overflow-y-auto flex-1 mx-1 px-1">
+            <div className="overflow-y-auto flex-1 mx-1 px-1 p-4">
                 {
                     components.length > 0 ? (
                         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
