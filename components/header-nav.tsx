@@ -64,8 +64,8 @@ export function HeaderNav({ session }: Props) {
             </div>
 
 
-            <div className="flex gap-1 items-center justify-between">
-                <div className="flex items-center gap-3">
+            <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
                     <Avatar className="h-8 w-8">
                         <AvatarFallback>
                             {session.user.name?.charAt(0).toUpperCase() ?? "U"}
@@ -73,12 +73,12 @@ export function HeaderNav({ session }: Props) {
                     </Avatar>
 
                     <div className="hidden sm:flex flex-col leading-none">
-                    <span className="text-sm font-medium">
-                        {session.user.name}
-                    </span>
-                        <span className="text-xs text-muted-foreground">
-                        {session.user.email}
-                    </span>
+                        <span className="text-sm font-medium">
+                            {session.user.name}
+                        </span>
+                            <span className="text-xs text-muted-foreground">
+                            {session.user.email}
+                        </span>
                     </div>
                 </div>
 

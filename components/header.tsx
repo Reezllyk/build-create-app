@@ -7,7 +7,7 @@ export async function Header() {
     const session = await auth();
     return (
         <header className="container mx-auto px-4 py-4">
-            <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+            <div className="flex gap-4 lg:flex-row md:flex-wrap md:flex-col lg:items-center lg:justify-between">
                 <TypographyH3>
                     <Link href="/">PC Builder</Link>
                 </TypographyH3>
