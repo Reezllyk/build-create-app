@@ -69,15 +69,13 @@ export function TableParts({
                                 </TableCell>
                                 <TableCell className="font-bold">{category.name}</TableCell>
                                 <TableCell >
-                                    <TableCell>
-                                        {selected ? (
-                                            <span className="text-green-500">
-                                                {selected.name}
-                                            </span>
-                                        ) : (
-                                            <span className="text-muted-foreground">Not selected</span>
-                                        )}
-                                    </TableCell>
+                                    {selected ? (
+                                        <span className="text-green-500">
+                                            {selected.name}
+                                        </span>
+                                    ) : (
+                                        <span className="text-muted-foreground">Not selected</span>
+                                    )}
                                 </TableCell>
                                 <TableCell>
                                     {selected?.price != null ? `${selected.price.toLocaleString("uk-UA")} ₴` : "-"}
